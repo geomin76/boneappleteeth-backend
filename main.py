@@ -23,12 +23,11 @@ def restaurants():
     lng = request.args.get('lng')
     price = request.args.get('price')
 
-    # need price
     # create some algorithm that gets total number of restaurants then creates offset randomizer (certain percentage)
     # so if user at frontend goes through all restaurants, query a new number of restaurants, need to do a "hit" list for random in frontend
     query = """
     {
-        search(term: "restaurants", latitude: """ + lat + """, longitude: """ + lng + """, open_now: true, price: """ + price + """) {
+        search(term: "restaurants", latitude: """ + lat + """, longitude: """ + lng + """, open_now: true, price: \"""" + price + """\") {
             total
             business {
                 name
@@ -36,7 +35,7 @@ def restaurants():
         }
     }
     """
-
+    
     r = requests.post(url, headers=headers, data=query)
     print(r.status_code)
     json_data = json.loads(r.text)
