@@ -42,9 +42,6 @@ def restaurants():
     offset = int(count_restaurants * random_digit)
     print("Offset {}".format(offset))
 
-    # create some algorithm that gets total number of restaurants then creates offset randomizer (certain percentage)
-    # so if user at frontend goes through all restaurants, query a new number of restaurants, need to do a "hit" list for random in frontend
-
     query = """
     {
         search(term: "restaurants", latitude: """ + lat + """, longitude: """ + lng + """, open_now: true, offset: """ + str(offset) + price + """) {
