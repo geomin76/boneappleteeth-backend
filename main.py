@@ -1,11 +1,14 @@
 import requests
 import json
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 import os
 import random
 
 app = Flask(__name__)
+
+cors = CORS(app)
 
 load_dotenv()
 
@@ -14,6 +17,7 @@ def main():
     return "hello, world!"
 
 @app.route("/restaurants")
+@cross_origin()
 def restaurants():
     url = "https://api.yelp.com/v3/graphql"
     headers = {
