@@ -17,7 +17,7 @@ def main():
     return "hello, world!"
 
 @app.route("/restaurants")
-@cross_origin()
+@cross_origin(origin='*')
 def restaurants():
     url = "https://api.yelp.com/v3/graphql"
     headers = {
