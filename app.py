@@ -42,7 +42,7 @@ def restaurants():
     count_restaurants = int(json.loads(r.text)['data']['search']['total'])
     print("Number of restaurants {}".format(count_restaurants))
 
-    random_digit = round(random.uniform(0, 0.5), 2)
+    random_digit = round(random.uniform(0, 0.4), 2)
     offset = int(count_restaurants * random_digit)
     print("Offset {}".format(offset))
 
@@ -52,6 +52,17 @@ def restaurants():
             total
             business {
                 name
+                location {
+                    formatted_address
+                }
+                price
+                rating
+                review_count
+                display_phone
+                distance
+                categories {
+                    title
+                }
             }
         }
     }
